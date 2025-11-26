@@ -84,11 +84,24 @@ if [ $exit_code -eq 0 ] && echo "$output" | grep -q "0 job failed"; then
     NR > 1 {
         gsub(/"/, "", $1); # Remove quotes from the first field (e.g., "C1" -> C1).
         
-        # Convert the "Side" column ($7) to a single letter for the "Layer".
-        layer = ($7 == "top") ? "T" : "B";
+        # FIX: Parse from the end of the line ($NF).
+        # This handles cases where the middle fields (Value or Package) contain commas
+        # (e.g., "40V, 2A"), which shifts the forward indices.
+        # The structure is always: Ref, [Variable Fields...], PosX, PosY, Rot, Side
         
-        # Print the columns in the desired new order.
-        print $1, $4, $5, layer, $6;
+        side_val = $NF;       # Last field
+        rot_val = $(NF-1);    # 2nd to last
+        pos_y = $(NF-2);      # 3rd to last
+        pos_x = $(NF-3);      # 4th to last
+
+        # Clean carriage returns just in case (Windows/Linux compatibility)
+        gsub(/\r/, "", side_val);
+
+        # Convert the "Side" column to a single letter.
+        layer = (side_val == "top") ? "T" : "B";
+        
+        # Print the columns in the desired new order using the relative variables.
+        print $1, pos_x, pos_y, layer, rot_val;
     }
     ' "$RAW_POS_FILE" > "$OUTPUT_POS_FILE"
 
