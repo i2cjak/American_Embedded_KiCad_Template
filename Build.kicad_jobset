@@ -22,7 +22,9 @@
         "format": "report",
         "output_filename": "",
         "parity": true,
+        "refill_zones": false,
         "report_all_track_errors": false,
+        "save_board": false,
         "severity": 32,
         "units": "mm"
       },
@@ -33,22 +35,21 @@
       "id": "af1c299f-7f8a-4828-9a2e-f40ac2dc3329",
       "settings": {
         "black_and_white": false,
-        "color_theme": "KiCad Default",
+        "color_theme": "American Embedded Light",
         "description": "",
         "drawing_sheet": "",
         "format": "pdf",
-        "hpgl_page_size": "default",
-        "hpgl_pen_size": 1.016,
-        "hpgl_plot_origin": "A3",
         "min_pen_width": 847,
-        "output_dir": "",
+        "output_filename": "schematic.pdf",
         "page_size": "auto",
         "pdf_hierarchical_links": true,
         "pdf_metadata": true,
         "pdf_property_popups": true,
         "plot_all": true,
         "plot_drawing_sheet": true,
-        "use_background_color": true
+        "show_hop_over": false,
+        "use_background_color": true,
+        "variant_name": ""
       },
       "type": "sch_export_plot_pdf"
     },
@@ -103,7 +104,7 @@
           "LCSC"
         ],
         "filter_string": "",
-        "include_excluded_from_bom": true,
+        "group_symbols": true,
         "keep_line_breaks": false,
         "keep_tabs": false,
         "output_filename": "bom_JLCPCB.csv",
@@ -111,7 +112,8 @@
         "ref_range_delimiter": "",
         "sort_asc": true,
         "sort_field": "Value",
-        "string_delimiter": "\""
+        "string_delimiter": "\"",
+        "variant_names": []
       },
       "type": "sch_export_bom"
     },
@@ -166,7 +168,7 @@
           "__LCSC"
         ],
         "filter_string": "",
-        "include_excluded_from_bom": true,
+        "group_symbols": true,
         "keep_line_breaks": false,
         "keep_tabs": false,
         "output_filename": "bom_NextPCB.csv",
@@ -174,7 +176,8 @@
         "ref_range_delimiter": "",
         "sort_asc": true,
         "sort_field": "Reference",
-        "string_delimiter": "\""
+        "string_delimiter": "\"",
+        "variant_names": []
       },
       "type": "sch_export_bom"
     },
@@ -183,6 +186,7 @@
       "id": "09a90cb1-cb76-4035-9ada-40324c970fd5",
       "settings": {
         "black_and_white": true,
+        "check_zones": false,
         "create_gerber_job_file": true,
         "crossout_dnp_footprints_on_fab_layers": true,
         "description": "",
@@ -268,9 +272,12 @@
         "excellon.oval_drill_route": false,
         "format": "excellon",
         "generate_map": false,
+        "generate_report": false,
+        "generate_tenting": false,
         "gerber_precision": 5,
         "map_format": "pdf",
         "output_dir": "",
+        "report_filename": "",
         "units": "in",
         "zero_format": "decimal"
       },
@@ -281,7 +288,9 @@
       "id": "77ba475b-f873-49d9-861d-71c75e5ef7a0",
       "settings": {
         "back_fp_property_popups": true,
+        "background_color": "rgba(0, 0, 0, 0.000)",
         "black_and_white": false,
+        "check_zones": false,
         "color_theme": "",
         "crossout_dnp_footprints_on_fab_layers": true,
         "description": "",
@@ -343,13 +352,14 @@
         "layers_to_include_on_all_layers": [],
         "mirror": false,
         "negative": false,
-        "output_filename": "",
+        "output_filename": "pcb_layout",
         "pdf_gen_mode": "one-page-per-layer-one-file",
         "pdf_metadata": true,
-        "plot_drawing_sheet": false,
+        "plot_drawing_sheet": true,
         "plot_footprint_values": true,
         "plot_pad_numbers": false,
         "plot_ref_des": true,
+        "scale": 1.0,
         "single_document": true,
         "sketch_dnp_footprints_on_fab_layers": true,
         "sketch_pads_on_fab_layers": false,
@@ -363,6 +373,7 @@
       "id": "76c9d93d-70ef-4e2d-94b6-85a8508b5593",
       "settings": {
         "description": "",
+        "exclude_bom": false,
         "exclude_dnp": true,
         "exclude_footprints_with_th": false,
         "format": "csv",
@@ -373,7 +384,8 @@
         "single_file": true,
         "smd_only": false,
         "units": "mm",
-        "use_drill_place_file_origin": true
+        "use_drill_place_file_origin": true,
+        "variant": ""
       },
       "type": "pcb_export_pos"
     },
